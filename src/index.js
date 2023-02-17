@@ -9,6 +9,7 @@ import { store } from "./store";
 
 const App = React.lazy(() => import("./agentApp/index"));
 const AdminApp = React.lazy(() => import("./adminApp/index"));
+const LoginPage = React.lazy(() => import("./login/index"));
 const root = document.getElementById("root");
 
 Amplify.configure(oldAwsConfig);
@@ -19,6 +20,7 @@ ReactDOM.render(
             <Router basepath="/">
                 <App path="/*" />
                 <AdminApp path="/admin/*" />
+                <LoginPage path="/login" />
             </Router>
         </Suspense>
     </Provider>,
