@@ -9,7 +9,7 @@ const ThemeEditor = React.lazy(() => import('./themeEditor/themeEditor'))
 
 const { Content } = Layout;
 
-const defaultThemeData = { borderRadius: 6, colorPrimary: '#407db5', fontFamily: 'Poppins', fontSize: 14, }
+const defaultThemeData = { borderRadius: 6, colorPrimary: '#407db5', fontFamily: 'Open Sans', fontSize: 14, }
 const componentSize = 'medium'
 
 const AdminIndexPage = () => {

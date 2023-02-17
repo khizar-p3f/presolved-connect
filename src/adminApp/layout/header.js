@@ -3,7 +3,6 @@ import React from 'react';
 import { MenuFoldOutlined, MenuUnfoldOutlined, UserOutlined } from '@ant-design/icons';
 import { Link, navigate } from '@gatsbyjs/reach-router';
 import logo from '../assets/images/logo.png';
-import logoWhite from '../assets/images/logo-white.png';
 
 const { Header } = Layout;
 const { Search } = Input;

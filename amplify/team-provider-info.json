@@ -10,6 +10,11 @@
       "StackName": "amplify-presolvedconnect-dev-150236",
       "StackId": "arn:aws:cloudformation:us-east-1:039289871235:stack/amplify-presolvedconnect-dev-150236/09ff2f30-a9ef-11ed-bb15-0eac30df53d1",
       "AmplifyAppId": "d3kyz7ygsmg2ut"
+    },
+    "categories": {
+      "api": {
+        "presolvedconnect": {}
+      }
     }
   }
 }
