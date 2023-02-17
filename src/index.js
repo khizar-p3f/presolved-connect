@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { navigate, Router } from "@gatsbyjs/reach-router";
 import { Amplify, Auth } from "aws-amplify";
 import oldAwsConfig from "./aws-exports";
-import Suspence from "./widgets/suspence";
+import Suspence from "./widgets/suspence"; 
 import { Provider } from "react-redux";
 import { store } from "./store";
 
@@ -20,7 +20,7 @@ ReactDOM.render(
             <Router basepath="/">
                 <App path="/*" />
                 <AdminApp path="/admin/*" />
-                <LoginPage path="/login" />
+                <LoginPage path="/login" />    
             </Router>
         </Suspense>
     </Provider>,

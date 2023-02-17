@@ -5,6 +5,8 @@ import AgentPrimaryHeader from './layout/header';
 import SplitPane, { Pane } from 'react-split-pane';
 import CustomCCP from './layout/customCCP';
 import { useSelector } from 'react-redux';
+import {Auth} from 'aws-amplify';
+import { navigate } from '@gatsbyjs/reach-router';
 
 
 const { Header, Content, Footer } = Layout;
@@ -13,6 +15,17 @@ const text = "lorem ipsum lorem i"
 const AgentAppMain = () => {
 
   const settings=useSelector(state=>state.settings)
+  useEffect(()=>{
+    Auth.currentAuthenticatedUser().then(user =>{
+
+    })
+    .catch((err)=>{
+      navigate("/login")
+    });
+  },[])
+
+
+
 
   return (
     <ConfigProvider prefixCls='presolved' theme={{ token:settings }} >
