@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   ccpInitiated: false,
   agentStatus: 'offline',
+  theme:{}
 }
 
 export const settings = createSlice({

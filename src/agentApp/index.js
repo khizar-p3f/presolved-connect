@@ -4,20 +4,26 @@ import './assets/style/index.less';
 import AgentPrimaryHeader from './layout/header';
 import SplitPane, { Pane } from 'react-split-pane';
 import CustomCCP from './layout/customCCP';
+import { useSelector } from 'react-redux';
 
 
 const { Header, Content, Footer } = Layout;
 const { Panel } = Collapse;
 const text = "lorem ipsum lorem i"
 const AgentAppMain = () => {
+
+  const settings=useSelector(state=>state.settings)
+
   return (
-    <ConfigProvider prefixCls='presolved' theme={{ token: { colorPrimary: '#003594', colorPrimaryBg: '#e6f7ff', } }} >
+    <ConfigProvider prefixCls='presolved' theme={{ token:settings }} >
       <Layout className="app-master">
         <AgentPrimaryHeader />
 
         <Content className="app-content">
+
           <SplitPane className='resizable-pane' split="vertical" minSize={400}>
-            <div>
+            
+            <div className='sidebar'>
 
               <Collapse defaultActiveKey={['customCCP']}>
                 <Panel header="Menu" key="2">
@@ -28,9 +34,10 @@ const AgentAppMain = () => {
 
             </div>
 
-            <Pane className='test'>
+            <Pane className='content-main-area'>
               <h1>Content Area</h1>
             </Pane>
+
           </SplitPane>
         </Content>
       </Layout>
