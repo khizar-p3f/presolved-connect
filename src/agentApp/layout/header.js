@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import { Avatar, Layout, Menu, Space, Typography, theme, Button, Modal } from 'antd';
 import { UserOutlined, LogoutOutlined, BellOutlined, AimOutlined, HomeOutlined, BookOutlined } from '@ant-design/icons';
 
@@ -17,6 +17,10 @@ const AgentPrimaryHeader = () => {
     }]
     const { useToken } = theme
     const { token } = useToken()
+    const [user, setUser] = useState(window.config.user)
+    useEffect(() => {       
+        setUser(window.config.user);
+    }, [window.config.user])
 
     const Logout = () => {
         Modal.confirm({
@@ -27,6 +31,7 @@ const AgentPrimaryHeader = () => {
             cancelText: 'No',
             onOk() {
                 Auth.signOut().then((data) => {
+                    window.config.user = new Map();
                     navigate("/login")
                 })
             }
@@ -50,7 +55,7 @@ const AgentPrimaryHeader = () => {
                     </Space>
                     <Space size={5}>
                         <Avatar style={{ background: token.colorPrimaryBgHover }} icon={<UserOutlined />} />
-                        <Typography.Text strong>Khizar Ahmed</Typography.Text>
+                        <Typography.Text strong>{user && user.attributes && user.attributes.email}</Typography.Text>
                     </Space>
 
                 </Space>

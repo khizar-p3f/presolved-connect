@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux'
 import { navigate } from '@gatsbyjs/reach-router'
 const { Content } = Layout
 const AppLoginPage = (props) => {
-    const dispatch=useDispatch()
+    const dispatch = useDispatch()
 
     const isLocalhost = Boolean(
         window.location.hostname === "localhost" ||
@@ -23,8 +23,8 @@ const AppLoginPage = (props) => {
             /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
         )
     );
-    
-    let oauth = {       
+
+    let oauth = {
         domain: "presolvedconnectdemoapp.auth.us-east-1.amazoncognito.com",
         scope: [
             "aws.cognito.signin.user.admin",
@@ -59,22 +59,17 @@ const AppLoginPage = (props) => {
         isLoggedin: false,
         user: null,
     });
-    const generateRandomPassword=()=>{
-        
-        let password = "";
-        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        for (let i = 0; i < 8; i++)
-            password += possible.charAt(Math.floor(Math.random() * possible.length));
-        return password;
-
-
-    }
     useEffect(() => {
         Amplify.configure(updatedAwsConfig);
-       
+    }, [])
+
+
+    useEffect(() => {
+
         Auth.currentAuthenticatedUser()
             .then((login) => {
-                setState({ ...state, isLoggedin: true });                
+                setState({ ...state, isLoggedin: true });
+                window.config.user = login
                 dispatch(updateUser({ ...login }));
                 navigate("/");
             })
@@ -97,20 +92,20 @@ const AppLoginPage = (props) => {
         backgroundPosition: 'top center',
     }
 
-    const SSOLogin=()=>{
-      
-            setState({ ...state, showLoginProgress: true })
-            console.log({ awsExport: updatedAwsConfig, auth: Auth.configure() });
-            Auth.federatedSignIn({ provider: "CognitoSAML" })
-                .then((res) => {
-                    console.log({ res });
-                })
-                .catch((error) => {
-                    console.error({error})
-                    console.error("Error with FederatedSignin is ", error);
-                })
+    const SSOLogin = () => {
 
-    
+        setState({ ...state, showLoginProgress: true })
+        console.log({ awsExport: updatedAwsConfig, auth: Auth.configure() });
+        Auth.federatedSignIn({ provider: "CognitoSAML" })
+            .then((res) => {
+                console.log({ res });
+            })
+            .catch((error) => {
+                console.error({ error })
+                console.error("Error with FederatedSignin is ", error);
+            })
+
+
     }
 
     return (
@@ -130,7 +125,7 @@ const AppLoginPage = (props) => {
                     </div>
                     <div className='body'>
                         <Button block type='primary' size='large'
-                         onClick={() => SSOLogin()}
+                            onClick={() => SSOLogin()}
                         >Login </Button>
                     </div>
                 </div>
