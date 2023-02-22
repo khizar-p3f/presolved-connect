@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Breadcrumb, Button, Card, Col, Layout, ConfigProvider, Form, Row, Typography, Switch, Slider, Input, Select, theme, Space, Alert, Menu, Tabs } from 'antd';
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
+import { Breadcrumb, Button, Card, Col, Layout, ConfigProvider, Form, Row, Typography, Switch, Slider, Input, Select, theme, Space, Alert, Menu, Tabs, notification, Modal } from 'antd';
+import { LaptopOutlined, NotificationOutlined, UserOutlined,ExclamationCircleOutlined  } from '@ant-design/icons';
+import { getSettings, saveSettings } from '../api/settings';
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -26,6 +27,18 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
 });
 
 const ThemeEditor = () => {
+
+    useEffect(() => {
+
+        getSettings().then((res) => {
+            setSettings(res.listSettings.items)
+        }).catch((err) => {
+            notification.error({
+                message: 'Error',
+                description: 'Error while fetching settings'
+            })
+        })
+    }, [])
 
     const [form] = Form.useForm();
     const [defaultData, setDefaultData] = useState({
@@ -56,6 +69,8 @@ const ThemeEditor = () => {
             color: "#f3f5f6"
         },
     })
+
+    const [settings, setSettings] = useState([])
 
 
     const ThemePreview = ({ themeData }) => {
@@ -112,10 +127,10 @@ const ThemeEditor = () => {
                                 <Typography.Title
                                     style={{ marginBottom: '20px' }}
                                 >
-                                    Heading 
+                                    Heading
                                 </Typography.Title>
                                 <Tabs type='card'>
-                                    <Tabs.TabPane tab="Tab 1" key="tab1" style={{background:'white', padding:'20px'}} >
+                                    <Tabs.TabPane tab="Tab 1" key="tab1" style={{ background: 'white', padding: '20px' }} >
                                         <Row>
                                             <Space
                                                 direction="vertical"
@@ -279,7 +294,42 @@ const ThemeEditor = () => {
 
 
     const onFinish = (values) => {
-        console.log('val: ', values);
+        let settingsInput = {
+            client_name: values.client,
+            logo: values.logoImage,
+            theme: JSON.stringify({
+                token: values.token,
+                sider: values.sider,
+                footer: values.footer,
+                header: values.header,
+            }),
+            created_by: "khizar"
+        }
+        Modal.confirm({
+            title: 'Confirm',
+            icon: <ExclamationCircleOutlined />,
+            content: 'Are you sure you want to save these settings?',
+            okText: 'Yes',
+            okType: 'danger',
+            cancelText: 'No',
+            onOk() {
+                saveSettings(settingsInput).then(res => {
+                    notification.success({
+                        message: 'Success',
+                        description: "Theme saved successfully",
+                    });
+                }).catch(err => {
+                    notification.error({
+                        message: 'Error',
+                        description: err.message,
+                    });
+                })
+            },
+
+        })
+
+
+
     }
 
 
@@ -303,6 +353,13 @@ const ThemeEditor = () => {
                                 span: 20,
                             }}
                         >
+                            <Form.Item name="client" label="client_name" style={{ marginRight: '20px' }} labelCol={{
+                                span: 17,
+                                offset: 0
+                            }}>
+                                <Input />
+                            </Form.Item>
+
                             <Typography.Title level={5} style={{ marginBottom: '20px' }}>LOGO</Typography.Title>
                             <Form.Item name="logoImage" label="Logo Image URL" style={{ marginRight: '20px' }} labelCol={{
                                 span: 17,
