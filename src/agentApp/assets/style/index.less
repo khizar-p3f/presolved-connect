@@ -23,8 +23,15 @@ section.presolved-layout.app-master {
         .SplitPane.resizable-pane.vertical {
 
             .Pane.vertical.Pane1 {
+                box-shadow: 1px 0 6px 0 #ccc;
                 .presolved-collapse {
                     border-radius: 0 !important;
+                }
+                .ccp{
+                    min-height: 80vh;
+                    iframe{
+                      min-height: 80vh;
+                    }
                 }
             }
 
@@ -86,6 +93,11 @@ section.presolved-layout.app-master {
 
             }
 
+            .Pane.vertical.Pane2 {
+                padding: 25px 15px;
+
+                .Pane.content-main-area {}
+            }
         }
     }
 

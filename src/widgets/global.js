@@ -11,8 +11,8 @@ class AppGlobal {
 
     registerUser(user) {
         window.config.user = user
-
     }
+    
 
 
 }

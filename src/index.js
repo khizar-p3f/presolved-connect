@@ -11,6 +11,8 @@ import AppGlobal from "./widgets/global";
 const App = React.lazy(() => import("./agentApp/index"));
 const AdminApp = React.lazy(() => import("./adminApp/index"));
 const LoginPage = React.lazy(() => import("./login/index"));
+const ChatWigetForTesting = React.lazy(() => import('./playground/chat'))
+
 const root = document.getElementById("root");
 
 Amplify.configure(oldAwsConfig);
@@ -25,6 +27,7 @@ ReactDOM.render(
                 <App path="/agent/*" />
                 <AdminApp path="/admin/*" />
                 <LoginPage path="/login" />    
+                <ChatWigetForTesting path="/test/chat/*" />
             </Router>
         </Suspense>
     </Provider>,
