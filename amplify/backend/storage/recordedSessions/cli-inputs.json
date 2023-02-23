@@ -1,0 +1,14 @@
+{
+  "resourceName": "recordedSessions",
+  "policyUUID": "57453fd0",
+  "bucketName": "presolvedconnectc0ede218aebb465f80d1f4cf6f44155",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

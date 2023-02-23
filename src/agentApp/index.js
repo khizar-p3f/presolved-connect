@@ -14,6 +14,7 @@ import { updateUser } from '../store/reducers/user';
 import CustomCCPSidebar from './layout/ccpSidebar';
 import AgentPrimaryHeader from './layout/header';
 import AgentDashboard from './pages';
+import S3RecordingsList from './pages/recordings';
 
 const PlaceHolder = React.lazy(() => import('./pages/placeholder'))
 const CustomCCPWidgetProvider = React.lazy(() => import('./connect'))
@@ -46,6 +47,7 @@ const AgentAppMain = () => {
       <CustomCCPWidgetProvider>
         <Router>
           <AgentDashboard path='/' />
+          <S3RecordingsList path='/recordings' />
         </Router>
       </CustomCCPWidgetProvider>
     </ConfigProvider>

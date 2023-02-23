@@ -73,127 +73,6 @@ const ThemeEditor = () => {
     const [settings, setSettings] = useState([])
 
 
-    const ThemePreview = ({ themeData }) => {
-
-        const algorithm = themeData.token.algorithm === "theme.defaultAlgorithm" ? true : false;
-
-        return (
-            <ConfigProvider
-                theme={{
-                    algorithm: algorithm ? theme.defaultAlgorithm : theme.darkAlgorithm,
-                    token: themeData.token
-                }}
-            >
-                <Layout>
-                    <Header className="header" style={{ backgroundColor: themeData.header.color }}>
-                        <Menu mode="horizontal" items={items1} style={{ backgroundColor: themeData.header.color, color: 'white' }} />
-                    </Header>
-                    <Layout>
-                        <Sider
-                            style={{
-                                background: themeData.sider.color,
-                            }}
-                            width={200}
-                        >
-                            <Menu
-                                mode="inline"
-                                style={{
-                                    background: themeData.sider.color,
-                                    height: '100%',
-                                    color: 'black'
-                                }}
-                                items={items2}
-
-                            />
-                        </Sider>
-
-                        <Content >
-                            <Breadcrumb
-                                style={{
-                                    margin: '20px 10px',
-                                }}
-                            >
-                                <Breadcrumb.Item>Home</Breadcrumb.Item>
-                                <Breadcrumb.Item>List</Breadcrumb.Item>
-                                <Breadcrumb.Item>App</Breadcrumb.Item>
-                            </Breadcrumb>
-
-                            <Content
-                                style={{
-                                    padding: '24px 24px',
-                                    minHeight: 280,
-                                }}
-                            >
-                                <Typography.Title
-                                    style={{ marginBottom: '20px' }}
-                                >
-                                    Heading
-                                </Typography.Title>
-                                <Tabs type='card'>
-                                    <Tabs.TabPane tab="Tab 1" key="tab1" style={{ background: 'white', padding: '20px' }} >
-                                        <Row>
-                                            <Space
-                                                direction="vertical"
-                                                style={{
-                                                    width: '75%',
-                                                }}
-                                            >
-
-                                                <Row>
-                                                    <Space>
-                                                        <Button type="primary">Primary Button</Button>
-                                                        <Button >Default Button</Button>
-                                                    </Space>
-                                                </Row>
-
-                                                <Alert
-                                                    message="Success Tips"
-                                                    description="Detailed description and advice about successful copywriting."
-                                                    type="success"
-                                                    showIcon
-                                                />
-                                                <Alert
-                                                    message="Informational Notes"
-                                                    description="Additional description and information about copywriting."
-                                                    type="info"
-                                                    showIcon
-                                                />
-                                                <Alert
-                                                    message="Warning"
-                                                    description="This is a warning notice about copywriting."
-                                                    type="warning"
-                                                    showIcon
-                                                    closable
-                                                />
-                                                <Alert
-                                                    message="Error"
-                                                    description="This is an error message about copywriting."
-                                                    type="error"
-                                                    showIcon
-                                                />
-                                            </Space>
-                                        </Row>
-                                    </Tabs.TabPane>
-                                    <Tabs.TabPane tab="Tab 2" key="tab2"  >
-                                        <Typography>Content of tab2</Typography>
-                                    </Tabs.TabPane>
-                                </Tabs>
-                            </Content>
-                        </Content>
-                    </Layout>
-                    <Footer
-                        style={{
-                            textAlign: 'center',
-                            background: themeData.footer.color
-                        }}
-                    >
-                        Ant Design ©2023 Created by Ant UED
-                    </Footer>
-                </Layout>
-            </ConfigProvider>
-        );
-    }
-
     useEffect(() => {
 
         form.setFieldsValue({
@@ -797,5 +676,129 @@ const ThemeEditor = () => {
         </div>
     );
 };
+
+
+
+const ThemePreview = ({ themeData }) => {
+
+    const algorithm = themeData.token.algorithm === "theme.defaultAlgorithm" ? true : false;
+
+    return (
+        <ConfigProvider
+            theme={{
+                algorithm: algorithm ? theme.defaultAlgorithm : theme.darkAlgorithm,
+                token: themeData.token
+            }}
+        >
+            <Layout>
+                <Header className="header" style={{ backgroundColor: themeData.header.color }}>
+                    <Menu mode="horizontal" items={items1} style={{ backgroundColor: themeData.header.color, color: 'white' }} />
+                </Header>
+                <Layout>
+                    <Sider
+                        style={{
+                            background: themeData.sider.color,
+                        }}
+                        width={200}
+                    >
+                        <Menu
+                            mode="inline"
+                            style={{
+                                background: themeData.sider.color,
+                                height: '100%',
+                                color: 'black'
+                            }}
+                            items={items2}
+
+                        />
+                    </Sider>
+
+                    <Content >
+                        <Breadcrumb
+                            style={{
+                                margin: '20px 10px',
+                            }}
+                        >
+                            <Breadcrumb.Item>Home</Breadcrumb.Item>
+                            <Breadcrumb.Item>List</Breadcrumb.Item>
+                            <Breadcrumb.Item>App</Breadcrumb.Item>
+                        </Breadcrumb>
+
+                        <Content
+                            style={{
+                                padding: '24px 24px',
+                                minHeight: 280,
+                            }}
+                        >
+                            <Typography.Title
+                                style={{ marginBottom: '20px' }}
+                            >
+                                Heading
+                            </Typography.Title>
+                            <Tabs type='card'>
+                                <Tabs.TabPane tab="Tab 1" key="tab1" style={{ background: 'white', padding: '20px' }} >
+                                    <Row>
+                                        <Space
+                                            direction="vertical"
+                                            style={{
+                                                width: '75%',
+                                            }}
+                                        >
+
+                                            <Row>
+                                                <Space>
+                                                    <Button type="primary">Primary Button</Button>
+                                                    <Button >Default Button</Button>
+                                                </Space>
+                                            </Row>
+
+                                            <Alert
+                                                message="Success Tips"
+                                                description="Detailed description and advice about successful copywriting."
+                                                type="success"
+                                                showIcon
+                                            />
+                                            <Alert
+                                                message="Informational Notes"
+                                                description="Additional description and information about copywriting."
+                                                type="info"
+                                                showIcon
+                                            />
+                                            <Alert
+                                                message="Warning"
+                                                description="This is a warning notice about copywriting."
+                                                type="warning"
+                                                showIcon
+                                                closable
+                                            />
+                                            <Alert
+                                                message="Error"
+                                                description="This is an error message about copywriting."
+                                                type="error"
+                                                showIcon
+                                            />
+                                        </Space>
+                                    </Row>
+                                </Tabs.TabPane>
+                                <Tabs.TabPane tab="Tab 2" key="tab2"  >
+                                    <Typography>Content of tab2</Typography>
+                                </Tabs.TabPane>
+                            </Tabs>
+                        </Content>
+                    </Content>
+                </Layout>
+                <Footer
+                    style={{
+                        textAlign: 'center',
+                        background: themeData.footer.color
+                    }}
+                >
+                    Ant Design ©2023 Created by Ant UED
+                </Footer>
+            </Layout>
+        </ConfigProvider>
+    );
+}
+
 
 export default ThemeEditor;

@@ -17,6 +17,9 @@
       },
       "auth": {
         "presolvedconnect4e9766cc": {}
+      },
+      "storage": {
+        "recordedSessions": {}
       }
     }
   }
