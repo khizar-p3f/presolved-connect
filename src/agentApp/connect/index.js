@@ -89,6 +89,9 @@ const CustomCCPWidgetProvider = ({ children }) => {
         }, 1000);
 
     }
+
+    
+
     const getAgentInfoFromConnect = () => {
         return new Promise((resolve, reject) => {
             console.log("Presolved::CCP::Gettting loged in Agent information");

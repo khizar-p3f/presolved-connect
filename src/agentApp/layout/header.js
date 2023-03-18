@@ -21,7 +21,8 @@ const AgentPrimaryHeader = () => {
         key: 'recordings',
         label: <Link to='/recordings'><Space><AimOutlined /> Recordings</Space></Link>,
     }
-]
+    ]
+
     const { useToken } = theme
     const { token } = useToken()
     const [user, setUser] = useState(window.config.user)
@@ -99,14 +100,14 @@ const AgentPrimaryHeader = () => {
         Storage.put(fileName, file, {
             contentType: 'video/webm',
             level: 'public',
-        }).then(result => console.log({saveFileToS3:result}))
-        .catch(err => console.log({saveFileToS3:err}));
+        }).then(result => console.log({ saveFileToS3: result }))
+            .catch(err => console.log({ saveFileToS3: err }));
 
     }
 
     const getAllfilesFromS3 = async () => {
         const list = await Storage.list('recordings', { level: 'public' })
-        console.log({list})
+        console.log({ list })
     }
 
     return (
@@ -145,3 +146,77 @@ const AgentPrimaryHeader = () => {
 }
 
 export default AgentPrimaryHeader
+
+// +1 602-812-2928
+
+const MSTeamsUsers = [
+    {
+        "businessPhones": [],
+        "displayName": "Khizar Ahmed",
+        "givenName": "Khizar",
+        "jobTitle": null,
+        "mail": "a.khizar@p3fusion.com",
+        "mobilePhone": null,
+        "officeLocation": null,
+        "preferredLanguage": "en-US",
+        "surname": "Ahmed",
+        "userPrincipalName": "a.khizar@p3fusion.com",
+        "id": "6ff1f1e4-74d0-4652-b9ce-47b54bab8d6b"
+    },
+
+
+    {
+        "businessPhones": [],
+        "displayName": "Sai Krishnan",
+        "givenName": "Sai",
+        "jobTitle": null,
+        "mail": "k.sai@p3fusion.com",
+        "mobilePhone": null,
+        "officeLocation": null,
+        "preferredLanguage": null,
+        "surname": "Krishnan",
+        "userPrincipalName": "k.sai@p3fusion.com",
+        "id": "98cf9c0c-46b4-4a68-8fc0-a6789482e068"
+    },
+
+    {
+        "businessPhones": [],
+        "displayName": "Premavathi Periasami",
+        "givenName": "Premavathi",
+        "jobTitle": null,
+        "mail": "p.prema@p3fusion.com",
+        "mobilePhone": null,
+        "officeLocation": null,
+        "preferredLanguage": null,
+        "surname": "Periasami",
+        "userPrincipalName": "p.prema@p3fusion.com",
+        "id": "9bed9874-24bb-469d-a45f-ad7ad74ffd39"
+    },
+
+    {
+        "businessPhones": [],
+        "displayName": "Siva Thangavel",
+        "givenName": "Siva",
+        "jobTitle": null,
+        "mail": "t.siva@p3fusion.com",
+        "mobilePhone": null,
+        "officeLocation": null,
+        "preferredLanguage": "en-IN",
+        "surname": "Thangavel",
+        "userPrincipalName": "t.siva@p3fusion.com",
+        "id": "848c9bb7-36b9-46f1-af04-662a0c379c1b"
+    },
+    {
+        "businessPhones": [],
+        "displayName": "Venkat Ramasamy",
+        "givenName": "Venkat",
+        "jobTitle": null,
+        "mail": "venkat.ramasamy@p3fusion.com",
+        "mobilePhone": null,
+        "officeLocation": null,
+        "preferredLanguage": "en-US",
+        "surname": "Ramasamy",
+        "userPrincipalName": "venkat.ramasamy@p3fusion.com",
+        "id": "0c57cef7-bce7-425b-9547-3fc9477ff9c3"
+    }
+]

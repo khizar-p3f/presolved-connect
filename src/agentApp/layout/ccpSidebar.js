@@ -82,30 +82,25 @@ const CustomCCPSidebar = () => {
         connect.contact(function (contact) {
             console.log(contact);
             let persistContact = contact
-            window.config.contacts = contact         
-
+            window.config.contacts = contact
             contact.onConnecting(function (ctx) {
                 window.config.ctx = ctx      
                 let contactAttributes = ctx._getData()
                 console.log("Presolved::connect::contact::onConnecting::");
                 setShowPopUp(true)
             })
-
             contact.onIncoming(function (ctx) {
                 let contactAttributes = ctx._getData()
                 console.log("Presolved::connect::contact::onIncoming::");
 
             });
-
             contact.onRefresh(function (ctx) {
                 let contactAttributes = ctx._getData()
             });
-
             contact.onAccepted(function (ctx) {
                 console.log("Presolved::connect::contact::onAccepted::");
                 let contactAttributes = ctx._getData()
             });
-
             contact.onEnded(function (ctx) {
                 window.config.contacts = new Map()
                 
@@ -127,6 +122,7 @@ const CustomCCPSidebar = () => {
             contact.onMissed(function (ctx) {
                 console.log("Presolved::connect::contact::onMissed::", ctx);
             })
+            
         });
 
     }
